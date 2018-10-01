@@ -1,0 +1,2 @@
+Get-ChildItem -Path "\\S607650rgfs01\Handover\AMADEUSQMGR-Prod\" -Recurse | Where-Object {$_.FullName -notlike "*\Zerokbs\*" -and $_.FullName -notlike "*\temp\*"} |Where {$_.Length -eq 0 -and $_.psiscontainer -eq $false} | where-object {$_.LastWriteTime -lt (get-date).AddMinutes(-5)} |move-item -Destination "\\s607650rgfs01\Handover\AMADEUSQMGR-Prod\Zerokbs\" 
+remove-item - Path "\\s607650rgfs01\Handover\AMADEUSQMGR-Prod\Zerokbs\" 
